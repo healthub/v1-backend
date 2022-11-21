@@ -17,5 +17,17 @@ model Users {
   status                    Boolean                     @default(true)
   email                     String?                     @unique
   password                  String?
-  bigThree                  Int?
+  
+  userInfo                  UserInfo[]
+}
+
+model UserInfo {
+  id                        Int                         @default(autoincrement()) @id
+  createdAt                 DateTime                    @default(now())
+  updatedAt                 DateTime                    @updatedAt
+  status                    Boolean                     @default(true)
+  bigThree                  Int
+  userId                    Int
+  
+  users                     Users                       @relation(fields: [userId], references: [id])
 }
