@@ -14,7 +14,7 @@ export class UsersRepository {
     return this.prisma.users.findMany();
   }
 
-  findUnique(id: number) {
+  findById(id: number) {
     return this.prisma.users.findUnique({ where: { id } });
   }
 
