@@ -5,7 +5,6 @@ export class UsersRepository {
   constructor(private readonly prisma: PrismaService) {}
 
   create(usersCreateInput: Prisma.UsersCreateInput) {
-    console.log(usersCreateInput);
     return this.prisma.users.create({ data: usersCreateInput });
   }
 
