@@ -1,4 +1,11 @@
-import { applyDecorators, Controller, Get, Post, Put } from '@nestjs/common';
+import {
+  applyDecorators,
+  Controller,
+  Delete,
+  Get,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 export const UsersController = () =>
@@ -33,7 +40,7 @@ export const UpdateUser = () =>
 
 export const DeleteUser = () =>
   applyDecorators(
-    Put('/:id'),
+    Delete('/:id'),
     ApiOperation({
       summary: '유저 삭제 API',
     }),
