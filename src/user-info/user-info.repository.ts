@@ -6,7 +6,7 @@ import { Prisma } from '@prisma/client';
 export class UserInfoRepository {
   constructor(private readonly prisma: PrismaService) {}
 
-  create(userInfoCreateInput: Prisma.UserInfoCreateInput) {
+  create(userId: number, userInfoCreateInput: Prisma.UserInfoCreateInput) {
     return this.prisma.userInfo.create({ data: userInfoCreateInput });
   }
 
