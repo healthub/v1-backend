@@ -22,7 +22,4 @@ export class UserProfileController {
 
     return null;
   }
-
-  @FindById()
-  async findById(@Param('id') userId: string) {}
 }

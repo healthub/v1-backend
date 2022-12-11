@@ -11,9 +11,7 @@ export class UserProfileService {
   ) {}
 
   async create(id: number, createUserProfileDto: CreateUserProfileRequestDto) {
-    const userId = await this.usersService.findById(
-      createUserProfileDto.userId,
-    );
+    const userId = await this.usersService.findById(id);
 
     if (!userId) {
       throw new ForbiddenException(
@@ -22,12 +20,12 @@ export class UserProfileService {
     }
 
     const createData = {
-      profileImageUrl: createUserProfileDto.profileImageUrl,
+      userId: userId.id,
       userName: createUserProfileDto.userName,
       bio: createUserProfileDto.bio,
       mainClub: createUserProfileDto.mainClub,
       instarAccount: createUserProfileDto.instarAccount,
-      userId,
+      profileImageUrl: createUserProfileDto.profileImageUrl,
     };
 
     return this.userProfileRepository.create(createData);
