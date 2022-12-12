@@ -7,10 +7,10 @@ async function bootstrap() {
 
   app.enableCors();
   const config = new DocumentBuilder()
-    .setTitle('Ounneo')
-    .setDescription('The ounneo API description')
+    .setTitle('Healthup')
+    .setDescription('The healthup API description')
     .setVersion('1.0')
-    .addTag('ounneo')
+    .addTag('healthup')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
