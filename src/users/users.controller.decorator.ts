@@ -1,38 +1,11 @@
-import {
-  applyDecorators,
-  Controller,
-  Delete,
-  Get,
-  Post,
-  Put,
-} from '@nestjs/common';
-import { ApiCreatedResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
-import { LoginUserResponseDto } from '../authentication/auth/dto/login-user-response.dto';
+import { applyDecorators, Controller, Delete, Get, Put } from '@nestjs/common';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { JwtAuth } from '@app/utils/guards/jwt-auth.guard';
 
 export const UsersController = () =>
   applyDecorators(
     Controller({ path: '/users', version: ['1'] }),
     ApiTags('Users'),
-  );
-
-export const CreateUser = () =>
-  applyDecorators(
-    Post('/register'),
-    ApiOperation({
-      summary: '회원가입 API',
-    }),
-  );
-
-export const Login = () =>
-  applyDecorators(
-    Post('/login'),
-    ApiOperation({
-      summary: '로그인 API',
-    }),
-    ApiCreatedResponse({
-      type: LoginUserResponseDto,
-    }),
   );
 
 export const FindById = () =>

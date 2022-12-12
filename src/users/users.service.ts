@@ -2,7 +2,6 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { UsersRepository } from './users.repository';
 import { UpdateUserRequestDto } from './dto/update-user-request.dto';
 import { Prisma, Users } from '@prisma/client';
-import { LoginUserRequestDto } from '../authentication/auth/dto/login-user-request.dto';
 
 @Injectable()
 export class UsersService {
@@ -12,16 +11,8 @@ export class UsersService {
     return this.usersRepository.create(data);
   }
 
-  async login(loginUserRequestDto: LoginUserRequestDto) {
-    return this.usersRepository.login(loginUserRequestDto);
-  }
-
   async findById(userId: number) {
     return this.usersRepository.findById(userId);
-  }
-
-  async findOne(email: string) {
-    return this.usersRepository.findOne(email);
   }
 
   async update(userId: number, updateUserRequestDto: UpdateUserRequestDto) {

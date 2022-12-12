@@ -4,6 +4,7 @@ import { PrismaModule } from '@app/prisma';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { JwtModule } from '@app/jwt';
 import { ConfigModule } from '@nestjs/config';
+import { UserProfileModule } from './users/user-profile/user-profile.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { ConfigModule } from '@nestjs/config';
       isGlobal: true,
     }),
     UsersModule,
+    UserProfileModule,
     PrismaModule,
     AuthenticationModule,
     JwtModule,
