@@ -17,7 +17,7 @@ export class UsersRepository {
 
     const password = loginOk.password;
 
-    if (!loginOk) {
+    if (loginOk) {
       if (password === loginUserRequestDto.password) {
         return true;
       }
