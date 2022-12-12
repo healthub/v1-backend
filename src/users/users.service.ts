@@ -1,16 +1,15 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { UsersRepository } from './users.repository';
-import { CreateUserRequestDto } from './dto/create-user-request.dto';
 import { UpdateUserRequestDto } from './dto/update-user-request.dto';
-import { Users } from '@prisma/client';
-import { LoginUserRequestDto } from './dto/login-user-request.dto';
+import { Prisma, Users } from '@prisma/client';
+import { LoginUserRequestDto } from '../authentication/auth/dto/login-user-request.dto';
 
 @Injectable()
 export class UsersService {
   constructor(private readonly usersRepository: UsersRepository) {}
 
-  async create(createUserRequestDto: CreateUserRequestDto) {
-    return this.usersRepository.create(createUserRequestDto);
+  async create(data: Prisma.UsersUncheckedCreateInput) {
+    return this.usersRepository.create(data);
   }
 
   async login(loginUserRequestDto: LoginUserRequestDto) {

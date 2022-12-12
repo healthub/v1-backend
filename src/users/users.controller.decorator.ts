@@ -7,7 +7,7 @@ import {
   Put,
 } from '@nestjs/common';
 import { ApiCreatedResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
-import { LoginUserResponseDto } from './dto/login-user-response.dto';
+import { LoginUserResponseDto } from '../authentication/auth/dto/login-user-response.dto';
 import { JwtAuth } from '@app/utils/guards/jwt-auth.guard';
 
 export const UsersController = () =>
@@ -20,7 +20,7 @@ export const CreateUser = () =>
   applyDecorators(
     Post('/register'),
     ApiOperation({
-      summary: '유저 생성 API',
+      summary: '회원가입 API',
     }),
   );
 

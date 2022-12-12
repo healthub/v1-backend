@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEmail, IsNotEmpty, IsString, Matches } from 'class-validator';
-import { Regex } from '../../shared/regex';
+import { Regex } from '../../../shared/regex';
 
 export class LoginUserRequestDto {
   @ApiProperty()

@@ -1,14 +1,14 @@
 import { PrismaService } from '@app/prisma';
 import { Prisma } from '@prisma/client';
 import { Injectable } from '@nestjs/common';
-import { LoginUserRequestDto } from './dto/login-user-request.dto';
+import { LoginUserRequestDto } from '../authentication/auth/dto/login-user-request.dto';
 
 @Injectable()
 export class UsersRepository {
   constructor(private readonly prisma: PrismaService) {}
 
-  create(usersCreateInput: Prisma.UsersCreateInput) {
-    return this.prisma.users.create({ data: usersCreateInput });
+  create(data: Prisma.UsersUncheckedCreateInput) {
+    return this.prisma.users.create({ data });
   }
 
   async login(loginUserRequestDto: LoginUserRequestDto) {
