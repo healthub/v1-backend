@@ -7,6 +7,8 @@ import {
 import { UsersService } from './users.service';
 import { Body, Param } from '@nestjs/common';
 import { UpdateUserRequestDto } from './dto/update-user-request.dto';
+import { User } from '@app/utils/users.decorator';
+import { UserRequestDto } from '../shared/dto/user-request.dto';
 
 @Controller()
 export class UsersController {
@@ -19,14 +21,14 @@ export class UsersController {
 
   @UpdateUser()
   async update(
-    @Param('id') userId: string,
+    @User() { userId }: UserRequestDto,
     @Body() body: UpdateUserRequestDto,
   ) {
-    return this.usersService.update(+userId, body);
+    return this.usersService.update(userId, body);
   }
 
   @DeleteUser()
-  async delete(@Param('id') userId: string) {
-    return this.usersService.delete(+userId);
+  async delete(@User() { userId }: UserRequestDto) {
+    return this.usersService.delete(userId);
   }
 }
