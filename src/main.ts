@@ -9,8 +9,8 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('Healthup')
     .setDescription('The healthup API description')
+    .addBearerAuth()
     .setVersion('1.0')
-    .addTag('healthup')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document, {
