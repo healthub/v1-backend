@@ -20,7 +20,7 @@ export class UserProfileService {
     }
 
     const createData = {
-      userId: userId.id,
+      userId: id,
       userName: createUserProfileDto.userName,
       bio: createUserProfileDto.bio,
       mainClub: createUserProfileDto.mainClub,

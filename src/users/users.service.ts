@@ -11,8 +11,8 @@ export class UsersService {
     return this.usersRepository.create(data);
   }
 
-  async findById(userId: number) {
-    return this.usersRepository.findById(userId);
+  async findById(id: number) {
+    return this.usersRepository.findById(id);
   }
 
   async update(userId: number, updateUserRequestDto: UpdateUserRequestDto) {

@@ -3,9 +3,6 @@ import { IsNotEmpty } from 'class-validator';
 
 export class CreateUserProfileRequestDto {
   @ApiProperty()
-  readonly profileImageUrl: string;
-
-  @ApiProperty()
   @IsNotEmpty()
   readonly userName: string;
 
@@ -17,4 +14,7 @@ export class CreateUserProfileRequestDto {
 
   @ApiProperty()
   readonly instarAccount: string;
+
+  @ApiProperty()
+  readonly profileImageUrl: string;
 }

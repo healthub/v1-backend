@@ -1,7 +1,6 @@
 import { PrismaService } from '@app/prisma';
 import { Prisma } from '@prisma/client';
 import { Injectable } from '@nestjs/common';
-import { LoginUserRequestDto } from '../authentication/auth/dto/login-user-request.dto';
 
 @Injectable()
 export class UsersRepository {
@@ -9,20 +8,6 @@ export class UsersRepository {
 
   create(data: Prisma.UsersUncheckedCreateInput) {
     return this.prisma.users.create({ data });
-  }
-
-  async login(loginUserRequestDto: LoginUserRequestDto) {
-    const email = loginUserRequestDto.email;
-    const loginOk = await this.findOne(email);
-
-    const password = loginOk.password;
-
-    if (loginOk) {
-      if (password === loginUserRequestDto.password) {
-        return true;
-      }
-    }
-    return false;
   }
 
   findById(id: number) {

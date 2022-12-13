@@ -26,9 +26,9 @@ model UserProfile {
   updatedAt       DateTime @updatedAt
   userId          Int
   userName        String
-  bio             String
-  mainClub        String
-  instarAccount   String
+  bio             String?
+  mainClub        String?
+  instarAccount   String?
   profileImageUrl String?
 
   users           Users    @relation(fields: [userId], references: [id])
