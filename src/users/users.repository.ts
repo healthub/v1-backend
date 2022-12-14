@@ -18,9 +18,9 @@ export class UsersRepository {
     return this.prisma.users.findUnique({ where: { email } });
   }
 
-  update(id: number, userUpdateInput: Prisma.UsersUpdateInput) {
+  update(userId: number, userUpdateInput: Prisma.UsersUpdateInput) {
     return this.prisma.users.update({
-      where: { id },
+      where: { id: userId },
       data: userUpdateInput,
     });
   }

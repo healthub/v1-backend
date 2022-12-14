@@ -24,11 +24,11 @@ model UserProfile {
   id              Int      @id @default(autoincrement())
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
-  userId          Int
+  userId          Int      @unique
   userName        String
   bio             String?
   mainClub        String?
-  instarAccount   String?
+  instaAccount    String?
   profileImageUrl String?
 
   users           Users    @relation(fields: [userId], references: [id])

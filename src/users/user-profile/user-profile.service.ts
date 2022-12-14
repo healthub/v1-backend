@@ -2,6 +2,7 @@ import { ForbiddenException, Injectable } from '@nestjs/common';
 import { UserProfileRepository } from './user-profile.repository';
 import { CreateUserProfileRequestDto } from './dto/create-user-profile-request.dto';
 import { UsersService } from '../users.service';
+import { UpdateUserProfileRequestDto } from './dto/update-user-profile-request.dto';
 
 @Injectable()
 export class UserProfileService {
@@ -20,14 +21,33 @@ export class UserProfileService {
     }
 
     const createData = {
-      userId: id,
+      userId: userId.id,
       userName: createUserProfileDto.userName,
       bio: createUserProfileDto.bio,
       mainClub: createUserProfileDto.mainClub,
-      instarAccount: createUserProfileDto.instarAccount,
+      instarAccount: createUserProfileDto.instaAccount,
       profileImageUrl: createUserProfileDto.profileImageUrl,
     };
 
     return this.userProfileRepository.create(createData);
+  }
+
+  async findByUserId(userId: number) {
+    return this.userProfileRepository.findByUserId(userId);
+  }
+
+  async update(
+    userId: number,
+    updateUserProfileDto: UpdateUserProfileRequestDto,
+  ) {
+    const updateId = await this.findByUserId(userId);
+
+    if (!updateId && !userId) {
+      throw new ForbiddenException(
+        '존재하지 않는 사용자 혹은 프로필을 변경할 수 없습니다.',
+      );
+    }
+
+    return this.userProfileRepository.update(updateId.id, updateUserProfileDto);
   }
 }

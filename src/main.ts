@@ -7,8 +7,8 @@ async function bootstrap() {
 
   app.enableCors();
   const config = new DocumentBuilder()
-    .setTitle('Healthup')
-    .setDescription('The healthup API description')
+    .setTitle('Healthub')
+    .setDescription('The healthub API description')
     .addBearerAuth()
     .setVersion('1.0')
     .build();

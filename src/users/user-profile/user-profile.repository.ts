@@ -9,4 +9,15 @@ export class UserProfileRepository {
   create(userProfileCreateInput: Prisma.UserProfileUncheckedCreateInput) {
     return this.prisma.userProfile.create({ data: userProfileCreateInput });
   }
+
+  findByUserId(userId: number) {
+    return this.prisma.userProfile.findUnique({ where: { userId } });
+  }
+
+  update(id: number, userProfileUpdateInput: Prisma.UserProfileUpdateInput) {
+    return this.prisma.userProfile.update({
+      where: { id },
+      data: userProfileUpdateInput,
+    });
+  }
 }

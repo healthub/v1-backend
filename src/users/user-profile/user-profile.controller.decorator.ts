@@ -1,4 +1,4 @@
-import { applyDecorators, Controller, Post } from '@nestjs/common';
+import { applyDecorators, Controller, Put } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { JwtAuth } from '@app/utils/guards/jwt-auth.guard';
 
@@ -8,11 +8,11 @@ export const UserProfileController = () =>
     ApiTags('UserProfile'),
   );
 
-export const CreateUserProfile = () =>
+export const UpdateUserProfile = () =>
   applyDecorators(
-    Post('/'),
+    Put('/'),
     JwtAuth(),
     ApiOperation({
-      summary: '유저 프로필 생성 API',
+      summary: '유저 프로필 변경 API',
     }),
   );
