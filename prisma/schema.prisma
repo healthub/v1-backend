@@ -126,8 +126,8 @@ model Boards {
   status            Boolean         @default(true)
   userId            Int
   repoId            Int
-  ImageUrl          String
   contents          String
+  ImageUrl          String
 
   users             Users           @relation(fields: [userId], references: [id])
   repository        Repository      @relation(fields: [repoId], references: [id])

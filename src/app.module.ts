@@ -6,6 +6,7 @@ import { JwtModule } from '@app/jwt';
 import { ConfigModule } from '@nestjs/config';
 import { UserProfileModule } from './users/user-profile/user-profile.module';
 import { RepositoryModule } from './repository/repository.module';
+import { BoardsModule } from './repository/boards/boards.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { RepositoryModule } from './repository/repository.module';
     AuthenticationModule,
     JwtModule,
     RepositoryModule,
+    BoardsModule,
   ],
   controllers: [],
   providers: [],

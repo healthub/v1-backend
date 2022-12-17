@@ -16,7 +16,7 @@ export class RepositoryService {
 
     if (!userId) {
       throw new ForbiddenException(
-        '존재하지 않는 사용자의 프로필을 생성할 수 없습니다.',
+        '존재하지 않는 사용자의 레포지토리를 생성할 수 없습니다.',
       );
     }
     const createData = {
