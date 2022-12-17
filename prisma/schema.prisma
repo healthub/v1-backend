@@ -14,10 +14,13 @@ model Users {
   status              Boolean               @default(true)
   email               String?               @unique
   password            String?
+
   organizationJoin    OrganizationJoin[]
   organizationMembers OrganizationMembers[]
   userBadge           UserBadge[]
   userProfile         UserProfile[]
+  repository          Repository[]
+  boards              Boards[]
 }
 
 model UserProfile {
@@ -101,4 +104,31 @@ enum OrganizationJoinStatus {
 enum Position {
   READER
   MEMBER
+}
+
+model Repository {
+  id                Int             @id @default(autoincrement())
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+  status            Boolean         @default(true)
+  userId            Int
+  repoName          String
+  repoExplan        String
+
+  users             Users           @relation(fields: [userId], references: [id])
+  boards            Boards[]
+}
+
+model Boards {
+  id                Int             @id @default(autoincrement())
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+  status            Boolean         @default(true)
+  userId            Int
+  repoId            Int
+  ImageUrl          String
+  contents          String
+
+  users             Users           @relation(fields: [userId], references: [id])
+  repository        Repository      @relation(fields: [repoId], references: [id])
 }
