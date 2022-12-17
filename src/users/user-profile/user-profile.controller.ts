@@ -1,8 +1,8 @@
 import {
+  CreateUserProfile,
   UpdateUserProfile,
   UserProfileController as Controller,
 } from './user-profile.controller.decorator';
-import { Register } from '../../authentication/auth/auth.controller.decoratro';
 import { UserProfileService } from './user-profile.service';
 import { Body } from '@nestjs/common';
 import { CreateUserProfileRequestDto } from './dto/create-user-profile-request.dto';
@@ -14,12 +14,14 @@ import { UpdateUserProfileRequestDto } from './dto/update-user-profile-request.d
 export class UserProfileController {
   constructor(private readonly userProfileService: UserProfileService) {}
 
-  @Register()
-  async create(
+  @CreateUserProfile()
+  async createProfile(
     @User() { userId }: UserRequestDto,
-    @Body() createUserProfileDto: CreateUserProfileRequestDto,
+    @Body() defaultProfileData: CreateUserProfileRequestDto,
   ) {
-    return this.userProfileService.create(userId, createUserProfileDto);
+    await this.userProfileService.createProfile(userId, defaultProfileData);
+
+    return null;
   }
 
   @UpdateUserProfile()

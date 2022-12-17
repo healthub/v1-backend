@@ -1,5 +1,6 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
 import { UserProfileRepository } from './user-profile.repository';
+
 import { CreateUserProfileRequestDto } from './dto/create-user-profile-request.dto';
 import { UsersService } from '../users.service';
 import { UpdateUserProfileRequestDto } from './dto/update-user-profile-request.dto';
@@ -11,7 +12,10 @@ export class UserProfileService {
     private readonly usersService: UsersService,
   ) {}
 
-  async create(id: number, createUserProfileDto: CreateUserProfileRequestDto) {
+  async createProfile(
+    id: number,
+    defaultProfileData: CreateUserProfileRequestDto,
+  ) {
     const userId = await this.usersService.findById(id);
 
     if (!userId) {
@@ -22,14 +26,14 @@ export class UserProfileService {
 
     const createData = {
       userId: userId.id,
-      userName: createUserProfileDto.userName,
-      bio: createUserProfileDto.bio,
-      mainClub: createUserProfileDto.mainClub,
-      instarAccount: createUserProfileDto.instaAccount,
-      profileImageUrl: createUserProfileDto.profileImageUrl,
+      userName: defaultProfileData.userName,
+      bio: defaultProfileData.bio,
+      mainClub: defaultProfileData.mainClub,
+      instaAccount: defaultProfileData.instaAccount,
+      profileImageUrl: defaultProfileData.profileImageUrl,
     };
 
-    return this.userProfileRepository.create(createData);
+    return this.userProfileRepository.createProfile(createData);
   }
 
   async findByUserId(userId: number) {

@@ -6,7 +6,9 @@ import { Prisma } from '@prisma/client';
 export class UserProfileRepository {
   constructor(private readonly prisma: PrismaService) {}
 
-  create(userProfileCreateInput: Prisma.UserProfileUncheckedCreateInput) {
+  createProfile(
+    userProfileCreateInput: Prisma.UserProfileUncheckedCreateInput,
+  ) {
     return this.prisma.userProfile.create({ data: userProfileCreateInput });
   }
 

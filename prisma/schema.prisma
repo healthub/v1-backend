@@ -80,6 +80,7 @@ model OrganizationMembers {
 }
 
 enum Badge {
+  ANCHOVYMAN
   SUPERMAN
   BATMAN
   SPIDERMAN
