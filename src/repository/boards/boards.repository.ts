@@ -9,4 +9,8 @@ export class BoardsRepository {
   create(data: Prisma.BoardsUncheckedCreateInput) {
     return this.prisma.boards.create({ data });
   }
+
+  FindById(id: number) {
+    return this.prisma.boards.findUnique({ where: { id } });
+  }
 }
