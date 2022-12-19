@@ -1,6 +1,7 @@
 import {
   BoardsController as Controller,
   CreateBoards,
+  GetBoards,
 } from './boards.constroller.decorator';
 import { Body, Param } from '@nestjs/common';
 import { User } from '@app/utils/users.decorator';
@@ -24,5 +25,10 @@ export class BoardsController {
     await this.boardsService.create(+createParam.repoId, userId, createDto);
 
     return null;
+  }
+
+  @GetBoards()
+  async findBoards() {
+    return this.boardsService.findBoards();
   }
 }

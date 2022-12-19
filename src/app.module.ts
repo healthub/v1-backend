@@ -21,7 +21,6 @@ import { BoardsModule } from './repository/boards/boards.module';
     JwtModule,
     RepositoryModule,
     BoardsModule,
-    // JandiModule,
   ],
   controllers: [],
   providers: [],
