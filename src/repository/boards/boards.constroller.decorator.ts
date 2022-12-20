@@ -10,7 +10,7 @@ export const BoardsController = () =>
 
 export const CreateBoards = () =>
   applyDecorators(
-    Post('/:repoId'),
+    Post('/'),
     JwtAuth(),
     ApiOperation({
       summary: '게시글 생성 API',

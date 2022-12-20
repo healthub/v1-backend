@@ -3,12 +3,9 @@ import {
   CreateBoards,
   GetBoards,
 } from './boards.constroller.decorator';
-import { Body, Param } from '@nestjs/common';
+import { Body } from '@nestjs/common';
 import { User } from '@app/utils/users.decorator';
-import {
-  CreateBoardsParamDto,
-  CreateBoardsRequestDto,
-} from './dto/create-boards-request.dto';
+import { CreateBoardsRequestDto } from './dto/create-boards-request.dto';
 import { UserRequestDto } from '../../shared/dto/user-request.dto';
 import { BoardsService } from './boards.service';
 
@@ -18,11 +15,10 @@ export class BoardsController {
 
   @CreateBoards()
   async create(
-    @Param() createParam: CreateBoardsParamDto,
     @User() { userId }: UserRequestDto,
     @Body() createDto: CreateBoardsRequestDto,
   ) {
-    await this.boardsService.create(+createParam.repoId, userId, createDto);
+    await this.boardsService.create(userId, createDto);
 
     return null;
   }

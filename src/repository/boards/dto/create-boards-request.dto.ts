@@ -1,6 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber } from 'class-validator';
-import { Type } from 'class-transformer';
+import { IsNotEmpty } from 'class-validator';
 
 export class CreateBoardsRequestDto {
   @ApiProperty()
@@ -9,12 +8,4 @@ export class CreateBoardsRequestDto {
 
   @ApiProperty()
   readonly ImageUrl: string;
-}
-
-export class CreateBoardsParamDto {
-  @ApiProperty()
-  @Type(() => Number)
-  @IsNumber()
-  @IsNotEmpty()
-  readonly repoId: number;
 }

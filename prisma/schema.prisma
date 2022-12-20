@@ -116,7 +116,6 @@ model Repository {
   repoExplan        String
 
   users             Users           @relation(fields: [userId], references: [id])
-  boards            Boards[]
 }
 
 model Boards {
@@ -125,10 +124,8 @@ model Boards {
   updatedAt         DateTime        @updatedAt
   status            Boolean         @default(true)
   userId            Int
-  repoId            Int
   contents          String
   ImageUrl          String
 
   users             Users           @relation(fields: [userId], references: [id])
-  repository        Repository      @relation(fields: [repoId], references: [id])
 }
