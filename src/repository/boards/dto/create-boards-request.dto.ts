@@ -1,9 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty } from 'class-validator';
 
 export class CreateBoardsRequestDto {
   @ApiProperty()
-  @IsNotEmpty()
+  readonly title: string;
+
+  @ApiProperty()
   readonly contents: string;
 
   @ApiProperty()

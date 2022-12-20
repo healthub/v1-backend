@@ -124,6 +124,7 @@ model Boards {
   updatedAt         DateTime        @updatedAt
   status            Boolean         @default(true)
   userId            Int
+  title             String
   contents          String
   ImageUrl          String
 
