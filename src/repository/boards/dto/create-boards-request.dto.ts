@@ -6,7 +6,4 @@ export class CreateBoardsRequestDto {
 
   @ApiProperty()
   readonly contents: string;
-
-  @ApiProperty()
-  readonly ImageUrl: string;
 }

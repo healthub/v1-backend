@@ -20,7 +20,6 @@ export class BoardsService {
     const boardsCreateData = {
       userId: userId.id,
       title: createDto.title,
-      ImageUrl: createDto.ImageUrl,
       contents: createDto.contents,
     };
 

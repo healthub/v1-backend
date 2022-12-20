@@ -126,7 +126,6 @@ model Boards {
   userId            Int
   title             String
   contents          String
-  ImageUrl          String?
 
   users             Users           @relation(fields: [userId], references: [id])
 }
