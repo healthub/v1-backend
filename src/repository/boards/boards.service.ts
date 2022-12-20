@@ -26,14 +26,7 @@ export class BoardsService {
     return this.boardsRepository.create(boardsCreateData);
   }
 
-  async findBoards() {
-    const date = new Date();
-    const toDay = {
-      year: date.getFullYear(),
-      month: date.getMonth(),
-      day: date.getDay(),
-    };
-
-    console.log(toDay);
+  async findBoards(id: number) {
+    return this.boardsRepository.findBoards(id);
   }
 }

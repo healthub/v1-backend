@@ -24,7 +24,7 @@ export class BoardsController {
   }
 
   @GetBoards()
-  async findBoards() {
-    return this.boardsService.findBoards();
+  async findBoards(@User() { userId }: UserRequestDto) {
+    return this.boardsService.findBoards(userId);
   }
 }

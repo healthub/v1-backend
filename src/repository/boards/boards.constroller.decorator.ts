@@ -20,6 +20,7 @@ export const CreateBoards = () =>
 export const GetBoards = () =>
   applyDecorators(
     Get('/'),
+    JwtAuth(),
     ApiOperation({
       summary: '게시글 조회 API',
     }),

@@ -10,7 +10,7 @@ export class BoardsRepository {
     return this.prisma.boards.create({ data });
   }
 
-  FindById(id: number) {
-    return this.prisma.boards.findUnique({ where: { id } });
+  findBoards(id: number) {
+    return this.prisma.boards.findMany({ where: { userId: id } });
   }
 }
