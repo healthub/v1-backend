@@ -1,4 +1,4 @@
-import { applyDecorators, Controller, Post, Put } from '@nestjs/common';
+import { applyDecorators, Controller, Get, Post, Put } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { JwtAuth } from '@app/utils/guards/jwt-auth.guard';
 
@@ -14,6 +14,15 @@ export const CreateUserProfile = () =>
     JwtAuth(),
     ApiOperation({
       summary: '유저 프로필 생성 API',
+    }),
+  );
+
+export const GetUserProfile = () =>
+  applyDecorators(
+    Get('/'),
+    JwtAuth(),
+    ApiOperation({
+      summary: '유저 프로필 조회 API',
     }),
   );
 

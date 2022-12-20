@@ -1,5 +1,6 @@
 import {
   CreateUserProfile,
+  GetUserProfile,
   UpdateUserProfile,
   UserProfileController as Controller,
 } from './user-profile.controller.decorator';
@@ -22,6 +23,11 @@ export class UserProfileController {
     await this.userProfileService.createProfile(userId, defaultProfileData);
 
     return null;
+  }
+
+  @GetUserProfile()
+  async findByProfile(@User() { userId }: UserRequestDto) {
+    return this.userProfileService.findByUserId(userId);
   }
 
   @UpdateUserProfile()
